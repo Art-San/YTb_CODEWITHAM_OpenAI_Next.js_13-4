@@ -1,7 +1,8 @@
 import './globals.css'
 import { Poppins } from 'next/font/google'
 import Navbar from '@/components/Navbar'
-// 3:09
+import { ClerkProvider } from '@clerk/nextjs'
+
 const font = Poppins({
   weight: ['400', '500', '700', '900'],
   subsets: ['latin']
@@ -14,13 +15,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={font.className}>
-        <section className=" flex flex-col h-screen w-full">
-          <Navbar />
-          <main className=" flex-1 text-black">{children}</main>
-        </section>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={font.className}>
+          <section className=" flex flex-col h-screen w-full overflow-hidden">
+            <Navbar />
+            <main className=" flex-1 text-black">{children}</main>
+          </section>
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }

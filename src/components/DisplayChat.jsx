@@ -1,9 +1,12 @@
-// 10:50
+'use client'
 import React from 'react'
 import Image from 'next/image'
 import bot from '../../public/chatgpt.webp'
+import { useUser } from '@clerk/nextjs'
 
 const DisplayChat = ({ message, reply }) => {
+  const { user } = useUser()
+
   return (
     <div className=" flex flex-col w-full">
       <div className="flex gap-4 bg-[#f1f1f1] p-5">
@@ -17,8 +20,8 @@ const DisplayChat = ({ message, reply }) => {
       <div className="flex gap-4 text-gray-700 py-10 px-5">
         <img
           className="rounded-full w-[35px] h-[35px] shadow-sm object-cover"
-          src="https://xc-life.ru/wp-content/gallery/avatar-kosmos/avatarka-nlo.jpg"
-          alt="avatar"
+          src={user?.imageUrl}
+          alt={user?.firstName}
         />
         <p>{reply}</p>
       </div>
