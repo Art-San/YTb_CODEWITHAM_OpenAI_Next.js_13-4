@@ -1,26 +1,19 @@
 import { NextResponse } from 'next/server'
 import { Configuration, OpenAIApi } from 'openai'
-// 27:59
-const configuration = new Configuration({
+
+const config = new Configuration({
   apiKey: process.env.OPEN_AI_KEY
 })
 
-const openai = new OpenAIApi(configuration)
+const openai = new OpenAIApi(config)
 
 export async function POST(req) {
   try {
     const { message } = await req.json()
 
-    if (!configuration.apiKey) {
+    if (!message) {
       return NextResponse.json(
-        { message: 'OpenAI API Key not configured' },
-        { status: 500 }
-      )
-    }
-
-    if (!messages) {
-      return NextResponse.json(
-        { message: 'Messages are required' },
+        { message: 'Сообщения обязательны' },
         { status: 400 }
       )
     }
@@ -36,7 +29,7 @@ export async function POST(req) {
     })
 
     const reply = response.data.choices[0].message.content
-    // return NextResponse.json(response.data.choices[0].message)
+
     return NextResponse.json(
       { message: message, reply: reply },
       { status: 200 }
