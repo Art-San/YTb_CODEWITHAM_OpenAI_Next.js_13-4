@@ -1,6 +1,6 @@
 import './globals.css'
 import { Poppins } from 'next/font/google'
-import Navbar from '@/components/Navbar'
+import Navbar from '../components/Navbar'
 import { ClerkProvider } from '@clerk/nextjs'
 
 const font = Poppins({
