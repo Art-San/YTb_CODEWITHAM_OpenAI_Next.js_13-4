@@ -5,15 +5,32 @@ import React, { useState } from 'react'
 const Form = () => {
   const [message, setMessage] = useState('')
 
+  // const handleSubmit1 = async (e) => {
+  //   e.preventDefault()
+  //   const response = await fetch('/api/chat', {
+  //     method: 'POST',
+  //     body: JSON.stringify({ message })
+  //   })
+
+  //   const data = await response.json()
+  //   console.log('data', data)
+  //   setMessage('')
+  // }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const rexponse = await fetch('/api/chat', {
+    console.log(message)
+    let api = localStorage.getItem('api')
+    if (!api || api === 'null') {
+      api = prompt('Enter api:') || ''
+      localStorage.setItem('api', api)
+    }
+    const response = await fetch('/api/chat', {
       method: 'POST',
-      body: JSON.stringify({ message })
+      body: JSON.stringify({ message, api })
     })
-
-    const data = await rexponse.json()
-    console.log('data', data)
+    const data = await response.json()
+    console.log(data)
     setMessage('')
   }
 
