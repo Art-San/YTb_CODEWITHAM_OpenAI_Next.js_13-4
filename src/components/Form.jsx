@@ -5,18 +5,6 @@ import React, { useState } from 'react'
 const Form = () => {
   const [message, setMessage] = useState('')
 
-  // const handleSubmit1 = async (e) => {
-  //   e.preventDefault()
-  //   const response = await fetch('/api/chat', {
-  //     method: 'POST',
-  //     body: JSON.stringify({ message })
-  //   })
-
-  //   const data = await response.json()
-  //   console.log('data', data)
-  //   setMessage('')
-  // }
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     console.log(message)
