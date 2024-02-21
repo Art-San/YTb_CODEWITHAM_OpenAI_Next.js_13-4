@@ -21,6 +21,7 @@ export default function Home() {
 
   return (
     <div className="mx-auto p-5 md:p-10 max-w-[1000px] w-full overflow-hidden">
+      <h1 className=" text-orange-600">Не работает, gpt отключен</h1>
       <Form />
       <div className="mt-5 md:mt-10 flex flex-col-reverse w-full max-h-[700px] h-full overflow-y-auto border border-gray-200 rounded-lg">
         {chats &&
